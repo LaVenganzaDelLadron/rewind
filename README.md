@@ -1,0 +1,261 @@
+# Rewind
+
+**Rewind** is a Linux Time Machine that records important system events and allows users to revisit what happened on their machine.
+
+It helps answer questions such as:
+
+* What changed yesterday?
+* Why did my system become slow?
+* Which package was installed?
+* Which service stopped?
+* What commands did I run?
+* Which files were modified?
+
+Rewind stores these events locally in a SQLite database and provides a simple command-line interface for exploring the system timeline.
+
+---
+
+## Features
+
+* Package monitoring (Pacman support)
+* Service monitoring
+* Performance monitoring
+* Shell history tracking
+* File change monitoring
+* Timeline search
+* Daily activity reports
+* System statistics
+
+---
+
+## Project Structure
+
+```text
+rewind/
+├── collect.py
+├── rewind.py
+├── database.py
+│
+├── collectors/
+│   ├── files.py
+│   ├── packages.py
+│   ├── performance.py
+│   ├── services.py
+│   └── shell.py
+│
+├── commands/
+│   ├── search.py
+│   ├── stats.py
+│   ├── today.py
+│   └── yesterday.py
+│
+└── rewind.db
+```
+
+---
+
+## Requirements
+
+* Python 3.10+
+* Linux
+* systemd
+* SQLite
+
+Install dependencies:
+
+```bash
+pip install psutil watchdog
+```
+
+---
+
+## Running the Collector
+
+The collector continuously monitors the system and stores events.
+
+```bash
+python collect.py
+```
+
+The collector records:
+
+* package changes
+* service state changes
+* performance alerts
+* shell history
+* file modifications
+
+---
+
+## Commands
+
+### View today's events
+
+```bash
+python rewind.py today
+```
+
+### View yesterday's events
+
+```bash
+python rewind.py yesterday
+```
+
+### Search the timeline
+
+```bash
+python rewind.py search nginx
+```
+
+### View statistics
+
+```bash
+python rewind.py stats
+```
+
+### Show help
+
+```bash
+python rewind.py help
+```
+
+---
+
+## Example
+
+```text
+$ python rewind.py today
+
+Rewind - 2026-06-27
+
+[08:32:10] [PACKAGE] Installed nginx
+[09:15:22] [FILE] Modified /etc/ssh/sshd_config
+[11:10:33] [PERFORMANCE] CPU usage reached 95%
+[13:00:17] [SERVICE] nginx.service restarted
+[13:01:55] [SHELL] sudo systemctl restart nginx
+```
+
+---
+
+## Database
+
+Rewind stores events inside a local SQLite database.
+
+Location:
+
+```text
+~/.rewind.db
+```
+
+Schema:
+
+```sql
+CREATE TABLE events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp TEXT NOT NULL,
+    category TEXT NOT NULL,
+    title TEXT NOT NULL,
+    details TEXT
+);
+```
+
+---
+
+## Current Collectors
+
+### Package Collector
+
+Parses:
+
+```text
+/var/log/pacman.log
+```
+
+Tracks:
+
+* installed packages
+* removed packages
+* upgraded packages
+
+---
+
+### Service Collector
+
+Uses:
+
+```text
+systemctl
+```
+
+Tracks:
+
+* started services
+* stopped services
+* restarted services
+* failed services
+
+---
+
+### Performance Collector
+
+Monitors:
+
+* CPU usage
+* memory usage
+* disk usage
+
+---
+
+### Shell Collector
+
+Reads:
+
+```text
+~/.bash_history
+```
+
+Tracks executed commands.
+
+---
+
+### File Collector
+
+Uses:
+
+```text
+watchdog
+```
+
+Tracks:
+
+* created files
+* modified files
+* deleted files
+
+---
+
+## Roadmap
+
+* systemd service support
+* daemon mode
+* multi-distribution package support
+* export reports
+* weekly summaries
+* interactive TUI
+* notifications
+* command learning mode
+* performance history graphs
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Created by DarkGlitch.
+
+Rewind aims to become a personal timeline for Linux systems.
