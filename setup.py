@@ -1,8 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-setup(
-    name="rewind",
-    version="0.1.0",
-    packages=find_packages(),
-    py_modules=["database", "rewind"],
-)
+if __name__ == "__main__":
+    setup()
+

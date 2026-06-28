@@ -1,4 +1,5 @@
 collectors
 commands
 database
+dist
 rewind

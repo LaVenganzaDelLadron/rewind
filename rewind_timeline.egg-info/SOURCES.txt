@@ -20,4 +20,5 @@ commands/yesterday.py
 rewind_timeline.egg-info/PKG-INFO
 rewind_timeline.egg-info/SOURCES.txt
 rewind_timeline.egg-info/dependency_links.txt
+rewind_timeline.egg-info/entry_points.txt
 rewind_timeline.egg-info/top_level.txt
