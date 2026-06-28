@@ -2,12 +2,14 @@
 
 import sys
 import threading
+import signal
 
 from commands import today
 from commands import yesterday
 from commands import search
 from commands import stats
 from collectors import collect
+
 
 
 def show_help():
@@ -24,10 +26,20 @@ Usage:
 
 
 def main():
-    collector_thread = threading.Thread(
-        target=collect.start,
-        daemon=True
-    )
+    stop_event = threading.Event()
+
+    def start_collector():
+        collect.start(stop_event=stop_event)
+
+    collector_thread = threading.Thread(target=start_collector, daemon=True)
+
+    def _handle_signal(signum, frame):
+        stop_event.set()
+        raise SystemExit(0)
+
+    signal.signal(signal.SIGINT, _handle_signal)
+    signal.signal(signal.SIGTERM, _handle_signal)
+
     collector_thread.start()
 
     if len(sys.argv) < 2:

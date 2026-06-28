@@ -14,8 +14,9 @@ from collectors.packages import PackageCollector
 from collectors.services import ServiceCollector
 from collectors.performance import PerformanceCollector
 from collectors.shell import ShellCollector
+from collectors.files import FileCollector
 
-def start():
+def start(stop_event=None):
     db = Database()
 
     packages = PackageCollector()
@@ -23,31 +24,29 @@ def start():
     performance = PerformanceCollector()
     shell = ShellCollector()
 
+    # Start file monitoring (queue-based) in parallel with other collectors.
+    # Watching / can be noisy; change watch_root if needed.
+    file_collector = FileCollector(watch_path="/", recursive=True)
+    file_collector.start()
+
+
     print("Rewind monitor started.")
 
     while True:
-        for event in packages.read_new_events():
-            db.add_event(
-                event["category"],
-                event["title"]
-            )
+        if stop_event is not None and stop_event.is_set():
+            break
 
-        for event in services.check_changes():
-            db.add_event(
-                event["category"],
-                event["title"]
-            )
+        all_events = []
 
-        for event in performance.check():
-            db.add_event(
-                event["category"],
-                event["title"]
-            )
+        all_events.extend(packages.read_new_events())
+        all_events.extend(services.check_changes())
+        all_events.extend(performance.check())
+        all_events.extend(shell.read_new_commands())
+        all_events.extend(file_collector.read_new_events())
 
-        for event in shell.read_new_commands():
-            db.add_event(
-                event["category"],
-                event["title"]
-            )
+        db.add_events(all_events)
 
         time.sleep(10)
+
+    file_collector.stop()
+    db.close()

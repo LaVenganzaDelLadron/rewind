@@ -21,16 +21,54 @@ class Database:
             details TEXT
         )
         """)
+
+        # Indexes for faster timeline queries as the DB grows.
+        self.cursor.execute(
+            "CREATE INDEX IF NOT EXISTS idx_events_timestamp ON events(timestamp)"
+        )
+        self.cursor.execute(
+            "CREATE INDEX IF NOT EXISTS idx_events_category ON events(category)"
+        )
+        self.cursor.execute(
+            "CREATE INDEX IF NOT EXISTS idx_events_title ON events(title)"
+        )
+
         self.conn.commit()
 
-    def add_event(self, category, title, details=""):
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    def add_event(self, category, title, details="", timestamp=None):
+        if timestamp is None:
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.cursor.execute(
+            "INSERT INTO events (timestamp, category, title, details) VALUES (?, ?, ?, ?)",
+            (timestamp, category, title, details),
+        )
+        self.conn.commit()
 
-        self.cursor.execute("""
-        INSERT INTO events (timestamp, category, title, details)
-        VALUES (?, ?, ?, ?)
-        """, (timestamp, category, title, details))
+    def add_events(self, events):
+        """Bulk insert events.
 
+        events: iterable of dicts with keys: category, title
+        optional keys: details, timestamp
+        """
+        rows = []
+        for event in events:
+            category = event.get("category")
+            title = event.get("title")
+            details = event.get("details", "")
+            timestamp = event.get("timestamp")
+            if category is None or title is None:
+                continue
+            if timestamp is None:
+                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            rows.append((timestamp, category, title, details))
+
+        if not rows:
+            return
+
+        self.cursor.executemany(
+            "INSERT INTO events (timestamp, category, title, details) VALUES (?, ?, ?, ?)",
+            rows,
+        )
         self.conn.commit()
 
     def get_all_events(self):
