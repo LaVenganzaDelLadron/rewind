@@ -4,12 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rewind-timeline"
-version = "0.1.1"
+version = "0.1.2"
 description = "Linux timeline collector and monitoring tool"
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+    "psutil>=5.9.0",
+    "watchdog>=4.0.0",
+]
 license = { text = "MIT" }
 authors = [{ name = "DarkGlitch" }]
+
 
 [project.scripts]
 rewind = "rewind:main"

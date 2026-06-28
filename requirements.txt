@@ -1,0 +1,6 @@
+# Runtime dependencies
+# Python >= 3.10 (see pyproject.toml)
+
+psutil>=5.9.0
+watchdog>=4.0.0
+
