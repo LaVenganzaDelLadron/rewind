@@ -56,34 +56,16 @@ rewind/
 
 ## Requirements
 
-* Python 3.10+
+* Python 3.8+
 * Linux
 * systemd
 * SQLite
 
-Install dependencies:
+How to install:
 
 ```bash
-pip install psutil watchdog
+pip install rewind-timeline
 ```
-
----
-
-## Running the Collector
-
-The collector continuously monitors the system and stores events.
-
-```bash
-python collect.py
-```
-
-The collector records:
-
-* package changes
-* service state changes
-* performance alerts
-* shell history
-* file modifications
 
 ---
 
@@ -92,31 +74,31 @@ The collector records:
 ### View today's events
 
 ```bash
-python rewind.py today
+rewind.py today
 ```
 
 ### View yesterday's events
 
 ```bash
-python rewind.py yesterday
+rewind.py yesterday
 ```
 
 ### Search the timeline
 
 ```bash
-python rewind.py search nginx
+rewind.py search nginx
 ```
 
 ### View statistics
 
 ```bash
-python rewind.py stats
+rewind.py stats
 ```
 
 ### Show help
 
 ```bash
-python rewind.py help
+rewind.py help
 ```
 
 ---
@@ -124,7 +106,7 @@ python rewind.py help
 ## Example
 
 ```text
-$ python rewind.py today
+$ rewind.py today
 
 Rewind - 2026-06-27
 
@@ -136,6 +118,27 @@ Rewind - 2026-06-27
 ```
 
 ---
+
+## Rewind
+
+<p align="center">
+  <img src="images/image1.png" alt="Rewind Banner" width="800">
+</p>
+
+---
+
+<p align="center">
+  <img src="images/image2.png" alt="Rewind Banner" width="800">
+</p>
+
+---
+
+<p align="center">
+  <img src="images/image3.png" alt="Rewind Banner" width="800">
+</p>
+
+**Rewind** is a Linux Time Machine that records important system events...
+
 
 ## Database
 
@@ -161,90 +164,14 @@ CREATE TABLE events (
 
 ---
 
-## Current Collectors
 
-### Package Collector
-
-Parses:
-
-```text
-/var/log/pacman.log
-```
-
-Tracks:
-
-* installed packages
-* removed packages
-* upgraded packages
-
----
-
-### Service Collector
-
-Uses:
-
-```text
-systemctl
-```
-
-Tracks:
-
-* started services
-* stopped services
-* restarted services
-* failed services
-
----
-
-### Performance Collector
-
-Monitors:
-
-* CPU usage
-* memory usage
-* disk usage
-
----
-
-### Shell Collector
-
-Reads:
-
-```text
-~/.bash_history
-```
-
-Tracks executed commands.
-
----
-
-### File Collector
-
-Uses:
-
-```text
-watchdog
-```
-
-Tracks:
+#E# Tracks:
 
 * created files
 * modified files
 * deleted files
 
 ---
-
-## Roadmap
-
-* systemd service support
-* daemon mode
-* multi-distribution package support
-* export reports
-* weekly summaries
-* interactive TUI
-* notifications
-* command learning mode
-* performance history graphs
 
 ---
 

@@ -1,12 +1,14 @@
 Metadata-Version: 2.4
 Name: rewind-timeline
-Version: 0.1.2
+Version: 0.1.3
 Summary: Linux timeline collector and monitoring tool
 Author: DarkGlitch
 License: MIT
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: psutil>=5.9.0
+Requires-Dist: watchdog>=4.0.0
 Dynamic: license-file
 
 # Rewind
