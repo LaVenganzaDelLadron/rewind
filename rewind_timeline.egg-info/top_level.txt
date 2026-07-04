@@ -2,4 +2,7 @@ collectors
 commands
 database
 dist
+images
 rewind
+tests
+utils

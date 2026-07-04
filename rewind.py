@@ -4,6 +4,8 @@ import sys
 import threading
 import signal
 
+from utils.helper import show_help
+
 from commands import today
 from commands import yesterday
 from commands import search
@@ -12,26 +14,9 @@ from collectors import collect
 
 
 
-def show_help():
-    print("""
-Rewind - Linux Time Machine
-
-Usage:
-    rewind today
-    rewind yesterday
-    rewind search <keyword>
-    rewind stats
-    rewind help
-""")
-
 
 def main():
     stop_event = threading.Event()
-
-    def start_collector():
-        collect.start(stop_event=stop_event)
-
-    collector_thread = threading.Thread(target=start_collector, daemon=True)
 
     def _handle_signal(signum, frame):
         stop_event.set()
@@ -39,8 +24,6 @@ def main():
 
     signal.signal(signal.SIGINT, _handle_signal)
     signal.signal(signal.SIGTERM, _handle_signal)
-
-    collector_thread.start()
 
     if len(sys.argv) < 2:
         show_help()
@@ -50,8 +33,11 @@ def main():
 
     if command == "monitor":
         collect.start()
+        return
 
-    elif command == "today":
+    collect.collect_once()
+
+    if command == "today":
         today.run()
 
     elif command == "yesterday":
