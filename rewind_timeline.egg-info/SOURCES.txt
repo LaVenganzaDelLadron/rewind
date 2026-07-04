@@ -24,6 +24,7 @@ rewind_timeline.egg-info/entry_points.txt
 rewind_timeline.egg-info/requires.txt
 rewind_timeline.egg-info/top_level.txt
 tests/test_collect_once.py
+tests/test_shell_history.py
 utils/__init__.py
 utils/banner.py
 utils/colors.py

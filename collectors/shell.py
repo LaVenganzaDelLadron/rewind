@@ -19,6 +19,18 @@ class ShellCollector:
         except FileNotFoundError:
             return 0
 
+    def _normalize_command(self, raw_line):
+        command = raw_line.strip()
+        if not command:
+            return None
+
+        # Bash history entries can include timestamp lines like "#1720000000".
+        # Those are metadata, not commands, and should not be recorded.
+        if command.startswith("#") and command[1:].isdigit():
+            return None
+
+        return command
+
     def read_new_commands(self):
         events = []
 
@@ -37,8 +49,8 @@ class ShellCollector:
             file.seek(self.position)
 
             for line in file:
-                command = line.strip()
-                if not command:
+                command = self._normalize_command(line)
+                if command is None:
                     continue
 
                 last = self._last_seen_ts.get(command)
