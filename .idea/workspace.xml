@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="398366a7-ee91-4cdb-8de3-779922b090ae" name="Changes" comment="update collect to automatic fetch data and store in the database">
+      <change afterPath="$PROJECT_DIR$/data/history.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structure/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/structure/single_linked_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/collect.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/files.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/packages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/performance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/services.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/collectors/shell.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/stats.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/today.py" beforeDir="false" afterPath="$PROJECT_DIR$/commands/today.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/yesterday.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rewind.py" beforeDir="false" afterPath="$PROJECT_DIR$/rewind.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_collect_once.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_shell_history.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/version.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/version.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +35,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="43" />
+    <option name="cachedIndexableFilesCount" value="30" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,61 +66,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000321635079" />
-      <entry key="MS500" value="1.0317301906521696" />
-      <entry key="S2" value="1.4220541455413045" />
-      <entry key="S5" value="1.708188021520559" />
-      <entry key="S10" value="1.8444382409301325" />
-      <entry key="S30" value="2.419423017216628" />
-      <entry key="S60" value="4.588871742689338" />
-      <entry key="M2" value="12.057323312105924" />
-      <entry key="M5" value="43.18560336727543" />
-      <entry key="M10" value="116.32942911710892" />
-      <entry key="M15" value="187.426980092066" />
-      <entry key="M30" value="331.36657079078833" />
-      <entry key="H1" value="457.58547424655256" />
-      <entry key="H2" value="543.0932719668552" />
-      <entry key="H4" value="593.176725094959" />
-      <entry key="D1" value="639.2666546827036" />
-      <entry key="W1" value="647.5985740517241" />
+      <entry key="MS100" value="1.5633983017000483" />
+      <entry key="MS500" value="3.9598298981661197" />
+      <entry key="S2" value="8.277847018535168" />
+      <entry key="S5" value="10.967690198895573" />
+      <entry key="S10" value="12.430828826828066" />
+      <entry key="S30" value="17.512762138424197" />
+      <entry key="S60" value="24.210155984208594" />
+      <entry key="M2" value="35.23054686516747" />
+      <entry key="M5" value="69.09409694994068" />
+      <entry key="M10" value="126.12340310924405" />
+      <entry key="M15" value="186.84094201089397" />
+      <entry key="M30" value="342.6717623354755" />
+      <entry key="H1" value="514.1914648631844" />
+      <entry key="H2" value="647.14814672084" />
+      <entry key="H4" value="730.8613545954772" />
+      <entry key="D1" value="811.5307992227574" />
+      <entry key="W1" value="826.4755639539313" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.4010294100739165E-223" />
-      <entry key="S2" value="2.5254054101389674E-56" />
-      <entry key="S5" value="7.31390055415443E-23" />
-      <entry key="S10" value="1.1598966958732494E-11" />
-      <entry key="S30" value="4.022550013269657E-4" />
-      <entry key="S60" value="0.03885594717628918" />
-      <entry key="M2" value="0.4398686679200876" />
-      <entry key="M5" value="2.206562506542997" />
-      <entry key="M10" value="4.730108510249836" />
-      <entry key="M15" value="6.766505413647133" />
-      <entry key="M30" value="10.643820817975284" />
-      <entry key="H1" value="13.972879035935119" />
-      <entry key="H2" value="16.219279499119654" />
-      <entry key="H4" value="17.53425948308671" />
-      <entry key="D1" value="18.74441170933839" />
-      <entry key="W1" value="18.963199140362967" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="6.891443249898436E-107" />
+      <entry key="S5" value="3.430236577829866E-43" />
+      <entry key="S10" value="5.856823431954009E-22" />
+      <entry key="S30" value="8.417027454295797E-8" />
+      <entry key="S60" value="3.1169300707262546E-4" />
+      <entry key="M2" value="0.021916923809858636" />
+      <entry key="M5" value="0.4093890158069902" />
+      <entry key="M10" value="1.77140413337106" />
+      <entry key="M15" value="3.449334229909559" />
+      <entry key="M30" value="7.772734138279976" />
+      <entry key="H1" value="12.468698595640152" />
+      <entry key="H2" value="16.081349796657392" />
+      <entry key="H4" value="18.348163816895298" />
+      <entry key="D1" value="20.528337957723572" />
+      <entry key="W1" value="20.931850473074302" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8950250991226875" />
-      <entry key="MS500" value="1.0089688145842435" />
-      <entry key="S2" value="1.4137542608936833" />
-      <entry key="S5" value="1.7041095270225808" />
-      <entry key="S10" value="1.8422207636360002" />
-      <entry key="S30" value="2.4189707781803023" />
-      <entry key="S60" value="4.626479745125136" />
-      <entry key="M2" value="12.492140978382126" />
-      <entry key="M5" value="45.37920223968243" />
-      <entry key="M10" value="121.0430608319734" />
-      <entry key="M15" value="194.17695032223062" />
-      <entry key="M30" value="341.99691092682747" />
-      <entry key="H1" value="471.5494116091717" />
-      <entry key="H2" value="559.3073442645671" />
-      <entry key="H4" value="610.7081662803738" />
-      <entry key="D1" value="658.0105638141122" />
-      <entry key="W1" value="666.5617005473487" />
+      <entry key="MS100" value="1.5410489165872168" />
+      <entry key="MS500" value="3.947416405224826" />
+      <entry key="S2" value="8.271107388216791" />
+      <entry key="S5" value="10.964103870553759" />
+      <entry key="S10" value="12.428793346076974" />
+      <entry key="S30" value="17.51177656146574" />
+      <entry key="S60" value="24.209561005108103" />
+      <entry key="M2" value="35.24820648066268" />
+      <entry key="M5" value="69.48425873159331" />
+      <entry key="M10" value="127.86822559670571" />
+      <entry key="M15" value="190.26335358075912" />
+      <entry key="M30" value="350.4219924935752" />
+      <entry key="H1" value="526.6447553703154" />
+      <entry key="H2" value="663.2203064339519" />
+      <entry key="H4" value="749.2044722966632" />
+      <entry key="D1" value="832.0582252153523" />
+      <entry key="W1" value="847.4072822882225" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -113,28 +135,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/darkglitch/PycharmProjects/rewind/utils&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.history.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/darkglitch/PycharmProjects/rewind/utils",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/utils" />
@@ -162,6 +185,8 @@
       <workItem from="1782660994883" duration="1429000" />
       <workItem from="1783150031810" duration="1351000" />
       <workItem from="1783158066320" duration="7000" />
+      <workItem from="1783363978756" duration="331000" />
+      <workItem from="1783536628119" duration="1380000" />
     </task>
     <task id="LOCAL-00001" summary="Initial COmmit">
       <option name="closed" value="true" />

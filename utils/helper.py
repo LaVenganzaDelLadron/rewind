@@ -8,9 +8,6 @@ def show_help():
     
     Usage:
         rewind today
-        rewind yesterday
-        rewind search <bash_command>
-        rewind stats
         rewind help 
 """)
     version()

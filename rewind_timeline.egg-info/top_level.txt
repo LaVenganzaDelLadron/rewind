@@ -1,8 +1,9 @@
-collectors
 commands
+data
 database
 dist
 images
 rewind
+structure
 tests
 utils

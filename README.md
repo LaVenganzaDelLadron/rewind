@@ -1,188 +1,26 @@
 # Rewind
 
-**Rewind** is a Linux Time Machine that records important system events and allows users to revisit what happened on their machine.
-
-It helps answer questions such as:
-
-* What changed yesterday?
-* Why did my system become slow?
-* Which package was installed?
-* Which service stopped?
-* What commands did I run?
-* Which files were modified?
-
-Rewind stores these events locally in a SQLite database and provides a simple command-line interface for exploring the system timeline.
-
----
+Rewind is a small Python CLI for viewing the commands you ran in the current day from your shell history.
 
 ## Features
 
-* Package monitoring (Pacman support)
-* Service monitoring
-* Performance monitoring
-* Shell history tracking
-* File change monitoring
-* Timeline search
-* Daily activity reports
-* System statistics
+- Read commands from your shell history file
+- Show commands from the current day
+- Simple CLI entry point
 
----
+## Usage
 
-## Project Structure
+Run:
 
-```text
-rewind/
-├── collect.py
-├── rewind.py
-├── database.py
-│
-├── collectors/
-│   ├── files.py
-│   ├── packages.py
-│   ├── performance.py
-│   ├── services.py
-│   └── shell.py
-│
-├── commands/
-│   ├── search.py
-│   ├── stats.py
-│   ├── today.py
-│   └── yesterday.py
-│
-└── rewind.db
+```bash
+python rewind.py today
 ```
-
----
 
 ## Requirements
 
-* Python 3.8+
-* Linux
-* systemd
-* SQLite
-
-How to install:
-
-```bash
-pip install rewind-timeline
-```
-
----
-
-## Commands
-
-### View today's events
-
-```bash
-rewind.py today
-```
-
-### View yesterday's events
-
-```bash
-rewind.py yesterday
-```
-
-### Search the timeline
-
-```bash
-rewind.py search nginx
-```
-
-### View statistics
-
-```bash
-rewind.py stats
-```
-
-### Show help
-
-```bash
-rewind.py help
-```
-
----
-
-## Example
-
-```text
-$ rewind.py today
-
-Rewind - 2026-06-27
-
-[08:32:10] [PACKAGE] Installed nginx
-[09:15:22] [FILE] Modified /etc/ssh/sshd_config
-[11:10:33] [PERFORMANCE] CPU usage reached 95%
-[13:00:17] [SERVICE] nginx.service restarted
-[13:01:55] [SHELL] sudo systemctl restart nginx
-```
-
----
-
-## Rewind
-
-<p align="center">
-  <img src="images/image1.png" alt="Rewind Banner" width="800">
-</p>
-
----
-
-<p align="center">
-  <img src="images/image2.png" alt="Rewind Banner" width="800">
-</p>
-
----
-
-<p align="center">
-  <img src="images/image3.png" alt="Rewind Banner" width="800">
-</p>
-
-**Rewind** is a Linux Time Machine that records important system events...
-
-
-## Database
-
-Rewind stores events inside a local SQLite database.
-
-Location:
-
-```text
-~/.rewind.db
-```
-
-Schema:
-
-```sql
-CREATE TABLE events (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    timestamp TEXT NOT NULL,
-    category TEXT NOT NULL,
-    title TEXT NOT NULL,
-    details TEXT
-);
-```
-
----
-
-
-#E# Tracks:
-
-* created files
-* modified files
-* deleted files
-
----
-
----
+- Python 3.10+
+- Linux
 
 ## License
 
 MIT License
-
----
-
-## Author
-
-Created by DarkGlitch.
-
-Rewind aims to become a personal timeline for Linux systems.
