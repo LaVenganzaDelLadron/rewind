@@ -1,31 +1,16 @@
-# commands/today.py
-from datetime import datetime
-from database import Database
+from datetime import date
+
+from data.history import History
 
 
-def run():
-    db = Database()
+def show_today():
+    history = History()
+    commands = history.get_commands_for_day(date.today())
 
-    today = datetime.now().strftime("%Y-%m-%d")
-
-    events = db.get_events_by_date(today)
-
-    print(f"\nRewind - {today}\n")
-
-    if not events:
-        print("No events found.")
+    print(f"Commands run on {date.today().isoformat()}:")
+    if not commands:
+        print("No commands found for today.")
         return
 
-    for timestamp, category, title, details in events:
-        time_only = timestamp.split()[1]
-
-        print(
-            f"[{time_only}] "
-            f"[{category.upper()}] "
-            f"{title}"
-        )
-
-        if details:
-            print(f"    {details}")
-
-    db.close()
+    for index, command in enumerate(commands, start=1):
+        print(f"{index}. {command}")
